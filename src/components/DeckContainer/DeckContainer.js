@@ -3,6 +3,7 @@ import CardsList from "../CardsList";
 import axios from 'axios';
 import {Button, message} from "antd";
 import {Wrapper} from './DeckContainer.styles'
+import EnvUrl from "../../EnvUrl";
 import {Link} from "react-router-dom";
 
 const onClick = () => {
@@ -12,7 +13,7 @@ const onClick = () => {
 
 class DeckContainer extends React.Component {
     componentDidMount() {
-        axios.get(`http://localhost:3000/cards`, {
+        axios.get(EnvUrl() + 'cards', {
             headers: {
                 'Authorization': localStorage.getItem('authToken')
             }
