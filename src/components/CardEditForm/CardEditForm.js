@@ -3,12 +3,13 @@ import React from 'react'
 import {Wrapper} from './CardEditForm.styles'
 import {Link} from "react-router-dom";
 import axios from "axios";
+import EnvUrl from "../../EnvUrl";
 
 
 const CardEditForm = () => {
     const [form] = Form.useForm();
     const onFinish = (values) => {
-        axios.post(`http://localhost:3000/cards`, {
+        axios.post(EnvUrl() + `cards`, {
             'back': values['back'],
             'front': values['front']
         }, {headers: {

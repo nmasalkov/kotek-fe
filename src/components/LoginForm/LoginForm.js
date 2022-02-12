@@ -2,10 +2,11 @@ import { Form, Input, Button, Checkbox, message } from 'antd';
 import React from 'react'
 import {Wrapper} from './LoginForm.styles'
 import axios from "axios";
+import EnvUrl from "../../EnvUrl";
 
 const LoginForm = () => {
     const onFinish = (values) => {
-        axios.post(`http://localhost:3000/sessions/login`, {
+        axios.post(EnvUrl() + `sessions/login`, {
             'username': values['username'],
             'password': values['password']
         })
