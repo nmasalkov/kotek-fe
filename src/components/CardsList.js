@@ -5,7 +5,7 @@ class CardsList extends React.Component {
         return (
             <div className="grid">
                 {this.props.cards.map(card => (
-                    <CardItem key={card.id} card={card} />
+                    <CardItem key={card.id} id={card.id} card={card} />
                 ))}
             </div>
         )

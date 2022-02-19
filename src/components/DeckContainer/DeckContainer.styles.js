@@ -21,6 +21,12 @@ export const Wrapper = styled.div`
     width: calc(100% / 6);
     padding: 0 16px 32px;
   }
+
+  .delete-button {
+    margin-left: 10%;
+    font-size: 150%;
+    color: darkred;
+  }
   
   .item__content {
     display: flex;
