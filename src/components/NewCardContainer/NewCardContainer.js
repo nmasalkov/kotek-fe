@@ -2,19 +2,14 @@ import {Button} from "antd";
 import React from 'react'
 import {Wrapper} from './NewCardContainer.styles'
 import CardEditForm from "../CardEditForm/CardEditForm";
-
-// todo move to separate component
-const onClick = () => {
-    localStorage.clear('authToken');
-    window.location.reload()
-}
+import logoutClick from "../../LogoutClick";
 
 class NewCardContainer extends React.Component {
 
     render() {
         return (
             <Wrapper>
-                <Button onClick={onClick}>Logout</Button>
+                <Button onClick={logoutClick}>Logout</Button>
                 <CardEditForm></CardEditForm>
 
             </Wrapper>

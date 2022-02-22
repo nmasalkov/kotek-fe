@@ -9,7 +9,6 @@ class CardItem extends React.Component {
         if(window.confirm('Are you sure you want to delete a card?') === false) {
             return null
         } else {
-            console.log(this.props.id)
             axios.delete(EnvUrl() + 'cards/' + (this.props.id), {
                 headers: {
                     'Authorization': localStorage.getItem('authToken')

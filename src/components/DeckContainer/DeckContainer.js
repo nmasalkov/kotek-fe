@@ -5,11 +5,8 @@ import {Button, message} from "antd";
 import {Wrapper} from './DeckContainer.styles'
 import EnvUrl from "../../EnvUrl";
 import {Link} from "react-router-dom";
+import logoutClick from "../../LogoutClick";
 
-const onClick = () => {
-    localStorage.clear('authToken');
-    window.location.reload()
-}
 
 class DeckContainer extends React.Component {
     componentDidMount() {
@@ -38,8 +35,9 @@ class DeckContainer extends React.Component {
     render() {
         return (
             <Wrapper>
-                <Button onClick={onClick}>Logout</Button>
+                <Button onClick={logoutClick}>Logout</Button>
                 <Link to='new'><Button >Create new card!</Button></Link>
+                <Link to='study'><Button >Start studying</Button></Link>
                 <CardsList cards={this.state.cards} />
             </Wrapper>
         );

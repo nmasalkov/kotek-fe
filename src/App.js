@@ -10,6 +10,7 @@ import DeckContainer from "./components/DeckContainer/DeckContainer";
 import PublicRoute from "./components/Routes/PublicRoute";
 import LoginForm from "./components/LoginForm/LoginForm";
 import NewCardContainer from "./components/NewCardContainer/NewCardContainer";
+import StudyCardContainer from "./components/StudyCardContainer/StudyCardContainer";
 
 const App = () => <BrowserRouter>
     <Routes>
@@ -27,6 +28,14 @@ const App = () => <BrowserRouter>
             element={
                 <PrivateRoute>
                     <NewCardContainer />
+                </PrivateRoute>
+            }
+        />
+        <Route
+            path="cards/study"
+            element={
+                <PrivateRoute>
+                    <StudyCardContainer />
                 </PrivateRoute>
             }
         />

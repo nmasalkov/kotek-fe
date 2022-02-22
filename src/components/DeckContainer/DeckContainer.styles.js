@@ -11,6 +11,12 @@ export const Wrapper = styled.div`
     transition: all 0.3s ease;
   }
   
+  .answers-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  
   .grid {
     display: flex;
     flex-wrap: wrap;
