@@ -11,7 +11,6 @@ class NewCardContainer extends React.Component {
             <Wrapper>
                 <Button onClick={logoutClick}>Logout</Button>
                 <CardEditForm></CardEditForm>
-
             </Wrapper>
         );
     }
