@@ -38,6 +38,8 @@ class DeckContainer extends React.Component {
                 <Button onClick={logoutClick}>Logout</Button>
                 <Link to='new'><Button >Create new card!</Button></Link>
                 <Link to='study'><Button >Start studying</Button></Link>
+                <Link to='../rules'><Button >See rules</Button></Link>
+                <Link to='../rules/new'><Button >Create new rule!</Button></Link>
                 <CardsList cards={this.state.cards} />
             </Wrapper>
         );

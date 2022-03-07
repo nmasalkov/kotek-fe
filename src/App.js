@@ -9,6 +9,8 @@ import PrivateRoute from './components/Routes/PrivateRoute'
 import DeckContainer from "./components/DeckContainer/DeckContainer";
 import PublicRoute from "./components/Routes/PublicRoute";
 import LoginForm from "./components/LoginForm/LoginForm";
+import RuleEditForm from "./components/RuleEditForm/RuleEditForm";
+import RulesContainer from "./components/RulesContainer/RulesContainer";
 import NewCardContainer from "./components/NewCardContainer/NewCardContainer";
 import StudyCardContainer from "./components/StudyCardContainer/StudyCardContainer";
 
@@ -36,6 +38,22 @@ const App = () => <BrowserRouter>
             element={
                 <PrivateRoute>
                     <StudyCardContainer />
+                </PrivateRoute>
+            }
+        />
+        <Route
+            path="rules"
+            element={
+                <PrivateRoute>
+                    <RulesContainer />
+                </PrivateRoute>
+            }
+        />
+        <Route
+            path="rules/new"
+            element={
+                <PrivateRoute>
+                    <RuleEditForm />
                 </PrivateRoute>
             }
         />
