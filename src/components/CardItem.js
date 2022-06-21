@@ -1,8 +1,7 @@
 import React from "react"
-import {Button} from "antd";
 import {Link} from "react-router-dom";
 import axios from "axios";
-import EnvUrl from "../EnvUrl";
+import EnvUrl from "../EnvUrl"
 
 class CardItem extends React.Component {
     deleteCard = () => {
@@ -16,12 +15,12 @@ class CardItem extends React.Component {
             }).then(() => { window.location.reload() })
         };
     }
-
     render() {
         return <div className="item">
             <div className="item__content">
                 {this.props.card.front} | {this.props.card.back}
                 <span className="delete-button" onClick={this.deleteCard}>x</span>
+                <Link to={{pathname: '/cards/' + (this.props.id) + '/edit'}}>✎</Link>
             </div>
         </div>
     }

@@ -13,6 +13,8 @@ import RuleEditForm from "./components/RuleEditForm/RuleEditForm";
 import RulesContainer from "./components/RulesContainer/RulesContainer";
 import NewCardContainer from "./components/NewCardContainer/NewCardContainer";
 import StudyCardContainer from "./components/StudyCardContainer/StudyCardContainer";
+import CardEditForm from "./components/CardEditForm/CardEditForm";
+import CardEditContainer from "./components/CardEditForm/CardEditContainer";
 
 const App = () => <BrowserRouter>
     <Routes>
@@ -54,6 +56,14 @@ const App = () => <BrowserRouter>
             element={
                 <PrivateRoute>
                     <RuleEditForm />
+                </PrivateRoute>
+            }
+        />
+        <Route
+            path="cards/:id/edit"
+            element={
+                <PrivateRoute>
+                    <CardEditContainer />
                 </PrivateRoute>
             }
         />

@@ -2,6 +2,7 @@ import React from 'react'
 import { Collapse } from 'antd';
 import { Wrapper } from './StudiedCardsCollapse.styles'
 import { submitAnswer } from "../SubmitAnswer";
+import {Link} from "react-router-dom";
 const { Panel } = Collapse;
 
 class StudiedCardCollapse extends React.Component {
@@ -10,6 +11,7 @@ class StudiedCardCollapse extends React.Component {
             <Wrapper>
                 <Collapse >
                     <Panel header={this.props.front} key="1">
+                        <Link to={{pathname: '/cards/' + (this.props.card_id) + '/edit'}}>Edit card ✎</Link>
                         <div>
                             <p> {this.props.back} </p>
                             <div className={'answers-container'}>

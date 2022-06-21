@@ -1,23 +1,69 @@
 import {Form, Input, Button, Checkbox, message} from 'antd';
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import {Wrapper} from './CardEditForm.styles'
 import {Link} from "react-router-dom";
 import axios from "axios";
 import EnvUrl from "../../EnvUrl";
 
+function CardEditForm() {
+    const [front, setFront] = useState();
+    const [back, setBack] = useState();
+    const [id, setId] = useState();
 
-const CardEditForm = () => {
+    useEffect(() => {
+        loadCard()
+    }, []);
+
+    const loadCard = async () => {
+        const id = parseInt(window.location.href.split('cards/')[1]);
+
+        axios.get(EnvUrl() + 'cards/' + (id) , {
+            headers: {
+                'Authorization': localStorage.getItem('authToken')
+            }
+        })
+            .then(res =>  {
+                setId(res.data['id'])
+                setBack(res.data['back'])
+                setFront(res.data['front'])
+
+            }).catch(error => {
+            if (error.response.status === 401) {
+                localStorage.removeItem('authToken')
+                window.location.reload()
+            }
+        })
+    }
+
     const [form] = Form.useForm();
+
+    // Todo Kill it with fire
+    const setValuesLol = (form) => {
+        form.setFieldsValue({
+            front: front,
+            back: back
+        })
+    }
+
     const onFinish = (values) => {
-        axios.post(EnvUrl() + `cards`, {
+        const id = parseInt(window.location.href.split('cards/')[1]);
+        let url = ''
+        if (isNaN(id)) {
+            url = EnvUrl() + `cards`
+        }
+        else {
+            url = EnvUrl() + `cards/` + (id)
+            }
+        axios.post(url, {
             'back': values['back'],
             'front': values['front']
-        }, {headers: {
+        }, { headers: {
                 'Authorization': localStorage.getItem('authToken')
             }})
             .then(res => {
                 message.success('Card was added')
                 form.resetFields()
+                window.location.reload()
             }).catch(error => {
             message.error(error.response.data.errors);
         });
@@ -26,6 +72,7 @@ const CardEditForm = () => {
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
+
 
     return (
         <Wrapper>
@@ -37,9 +84,11 @@ const CardEditForm = () => {
                 wrapperCol={{
                     span: 16,
                 }}
-                initialValues={{
-                    remember: true,
-                }}
+
+                initialValues={
+                    setValuesLol(form)
+                }
+
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
@@ -53,7 +102,7 @@ const CardEditForm = () => {
                         },
                     ]}
                 >
-                    <Input.TextArea rows={6} />
+                    <Input.TextArea placeholder={front} rows={6} />
                 </Form.Item>
 
                 <Form.Item
