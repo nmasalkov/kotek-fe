@@ -14,6 +14,7 @@ class StudiedCardCollapse extends React.Component {
                         <Link to={{pathname: '/cards/' + (this.props.card_id) + '/edit'}}>Edit card ✎</Link>
                         <div>
                             <p> {this.props.back} </p>
+                            <p> {this.props.examples} </p>
                             <div className={'answers-container'}>
                                 <button className={'answer-button-1'}
                                         onClick={()=> submitAnswer(1, this.props.id)}>

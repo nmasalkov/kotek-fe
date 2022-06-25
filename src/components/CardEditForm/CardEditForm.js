@@ -9,6 +9,7 @@ function CardEditForm() {
     const [front, setFront] = useState();
     const [back, setBack] = useState();
     const [id, setId] = useState();
+    const [examples, setExamples] = useState();
 
     useEffect(() => {
         loadCard()
@@ -26,6 +27,7 @@ function CardEditForm() {
                 setId(res.data['id'])
                 setBack(res.data['back'])
                 setFront(res.data['front'])
+                setExamples(res.data['examples'])
 
             }).catch(error => {
             if (error.response.status === 401) {
@@ -41,7 +43,8 @@ function CardEditForm() {
     const setValuesLol = (form) => {
         form.setFieldsValue({
             front: front,
-            back: back
+            back: back,
+            examples: examples
         })
     }
 
@@ -56,7 +59,8 @@ function CardEditForm() {
             }
         axios.post(url, {
             'back': values['back'],
-            'front': values['front']
+            'front': values['front'],
+            'examples': values['examples']
         }, { headers: {
                 'Authorization': localStorage.getItem('authToken')
             }})
@@ -118,13 +122,12 @@ function CardEditForm() {
                 </Form.Item>
 
                 <Form.Item
-                    name="remember"
-                    valuePropName="checked"
-                    wrapperCol={{
-                        offset: 8,
-                        span: 16,
-                    }}
+                    label="Examples"
+                    name="examples"
+                    rules={[
+                    ]}
                 >
+                    <Input.TextArea rows={6} />
                 </Form.Item>
 
                 <Form.Item
