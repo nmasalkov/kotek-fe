@@ -4,19 +4,19 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 32px;
-  
+
   .ant-btn {
     margin-left: auto;
     margin-bottom: 32px;
     transition: all 0.3s ease;
   }
-  
+
   .answers-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
   }
-  
+
   .grid {
     display: flex;
     flex-wrap: wrap;
@@ -33,7 +33,7 @@ export const Wrapper = styled.div`
     font-size: 150%;
     color: darkred;
   }
-  
+
   .item__content {
     display: flex;
     align-items: center;
@@ -45,7 +45,7 @@ export const Wrapper = styled.div`
     height: 100%;
     transition: all 0.3s ease;
     cursor: pointer;
-    
+
     &:hover {
       border-color: #40a9ff;
       color: #40a9ff;

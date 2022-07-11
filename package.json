@@ -15,11 +15,15 @@
     "styled-components": "^5.3.3",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "prettier": "^2.7.1"
+  },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier": "prettier --write -l 'src/**/*.{js,json}'"
   },
   "eslintConfig": {
     "extends": [

@@ -1,6 +1,6 @@
-const logoutClick = (e) => {
-    localStorage.clear('authToken');
-    window.location.reload()
+const logoutClick = () => {
+  localStorage.clear('authToken')
+  window.location.reload()
 }
 
 export default logoutClick
