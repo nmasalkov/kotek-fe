@@ -1,4 +1,4 @@
-import {Form, Input, Button, Checkbox, message} from 'antd';
+import {Form, Input, Button, Switch, message} from 'antd';
 import React, { useEffect, useState } from "react";
 import {Wrapper} from './CardEditForm.styles'
 import {Link} from "react-router-dom";
@@ -8,6 +8,7 @@ import EnvUrl from "../../EnvUrl";
 function CardEditForm() {
     const [front, setFront] = useState();
     const [back, setBack] = useState();
+    const [prioritized, setPrioritized] = useState();
     const [id, setId] = useState();
     const [examples, setExamples] = useState();
 
@@ -26,6 +27,7 @@ function CardEditForm() {
             .then(res =>  {
                 setId(res.data['id'])
                 setBack(res.data['back'])
+                setPrioritized(res.data['prioritized'])
                 setFront(res.data['front'])
                 setExamples(res.data['examples'])
 
@@ -44,6 +46,7 @@ function CardEditForm() {
         form.setFieldsValue({
             front: front,
             back: back,
+            prioritized: prioritized,
             examples: examples
         })
     }
@@ -57,8 +60,10 @@ function CardEditForm() {
         else {
             url = EnvUrl() + `cards/` + (id)
             }
+
         axios.post(url, {
             'back': values['back'],
+            'prioritized': values['prioritized'],
             'front': values['front'],
             'examples': values['examples']
         }, { headers: {
@@ -76,7 +81,6 @@ function CardEditForm() {
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
-
 
     return (
         <Wrapper>
@@ -128,6 +132,10 @@ function CardEditForm() {
                     ]}
                 >
                     <Input.TextArea rows={6} />
+                </Form.Item>
+
+                <Form.Item label="Prioritized?" name='prioritized' valuePropName="prioritized">
+                    <Switch />
                 </Form.Item>
 
                 <Form.Item

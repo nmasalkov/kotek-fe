@@ -15,10 +15,18 @@ class StudiedCard extends React.Component {
                 const card = res.data;
                 const front = card.front
                 const back = card.back
+                const prioritized = card.prioritized
                 const card_id = card.id
                 const examples = card.examples
                 const id = card.cards_user_id
-                this.setState({ examples: examples, front: front, back: back, id: id, card_id: card_id });
+                this.setState({
+                    examples: examples,
+                    front: front,
+                    back: back,
+                    id: id,
+                    card_id: card_id,
+                    prioritized: prioritized
+                });
             }).catch(error => {
             if (error.response.status === 401) {
                 localStorage.removeItem('authToken')
@@ -30,12 +38,14 @@ class StudiedCard extends React.Component {
 
     state = {
         front: 'NO CARD',
-        back: 'NO CARD'
+        back: 'NO CARD',
+        prioritized: false
     };
 
     render() { return <StudiedCardCollapse front={this.state.front}
                                            card_id={this.state.card_id}
                                            back={this.state.back}
+                                           prioritized={this.state.prioritized}
                                            examples={this.state.examples}
                                            id={ this.state.id }> </StudiedCardCollapse> }
 }
