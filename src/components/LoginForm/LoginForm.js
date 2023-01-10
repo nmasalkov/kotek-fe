@@ -5,11 +5,16 @@ import axios from "axios";
 import EnvUrl from "../../EnvUrl";
 
 const LoginForm = () => {
+    const config = {
+        headers: {
+            'Access-Control-Allow-Origin': 'pidorasina'
+        }
+    }
     const onFinish = (values) => {
         axios.post(EnvUrl() + `sessions/login`, {
             'username': values['username'],
             'password': values['password']
-        })
+        }, config)
             .then(res => {
                 const response = res.data;
                 localStorage.setItem('authToken', response['token']);
