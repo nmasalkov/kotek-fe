@@ -20,12 +20,12 @@ class StudiedCard extends React.Component {
                 const examples = card.examples
                 const id = card.cards_user_id
                 this.setState({
-                    examples: examples,
-                    front: front,
-                    back: back,
-                    id: id,
-                    card_id: card_id,
-                    prioritized: prioritized
+                    examples,
+                    front,
+                    back,
+                    id,
+                    card_id,
+                    prioritized,
                 });
             }).catch(error => {
             if (error.response.status === 401) {
